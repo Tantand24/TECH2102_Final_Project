@@ -73,7 +73,6 @@ pipeline {
             }
         }
 
-        /*
         stage('Deploy to AWS'){
 
             agent{
@@ -98,7 +97,5 @@ pipeline {
                 }
             }
         }
-        }
-        */
     }
 }
