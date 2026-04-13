@@ -1,0 +1,27 @@
+{
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "family": "Final-Project-TaskDefinition-Prod",
+    "containerDefinitions": [
+        {
+            "name": "FinalProjectApp",
+            "image": "110661053267.dkr.ecr.ca-west-1.amazonaws.com/tech2102_final_project/tech2102_final_project:latest",
+            "portMappings": [
+                {
+                    "name": "ngnix-80-tcp",
+                    "containerPort": 80,
+                    "hostPort": 80,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true
+        }
+    ],
+    "volumes": [],
+    "networkMode": "awsvpc",
+    "memory": "512",
+    "cpu": "256",
+    "executionRoleArn": "arn:aws:iam::110661053267:role/ecsTaskExecutionRole"
+}
