@@ -6,7 +6,7 @@
     "containerDefinitions": [
         {
             "name": "FinalProjectApp",
-            "image": "110661053267.dkr.ecr.ca-west-1.amazonaws.com/tech2102_final_project/tech2102_final_project:latest",
+            "image": "110661053267.dkr.ecr.ca-west-1.amazonaws.com/tech2102_final_project:latest",
             "portMappings": [
                 {
                     "name": "ngnix-80-tcp",
