@@ -50,17 +50,16 @@ pipeline {
 
         stage('Build My Docker Image'){
             
-            agent{
-                docker{
+             agent {
+                docker {
                     image 'amazon/aws-cli'
                     reuseNode true
                     args '-u root -v /var/run/docker.sock:/var/run/docker.sock --entrypoint=""'
                 }
             }
             steps{
-                withCredentials([usernamePassword(credentialsId: 'tech2102_Final_Project_AWS_API_KEY', passwordVariable: 'AWS_SECRET_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY_ID')]) 
-                {
-
+                 withCredentials([usernamePassword(credentialsId: 'tech2102_Final_Project_AWS_API_KEY', passwordVariable: 'AWS_SECRET_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY_ID')]) 
+                { 
                     sh '''
                         amazon-linux-extras install docker
                         docker build -t $AWS_DOCKER_REGISTRY/$APP_NAME .
