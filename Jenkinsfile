@@ -62,10 +62,8 @@ pipeline {
                 {
 
                     sh '''
-                        dnf install -y docker
+                        amazon-linux-extras install docker
                         docker build -t $AWS_DOCKER_REGISTRY/$APP_NAME .
-                        docker images
-
                         aws ecr get-login-password | docker login --username AWS --password-stdin $AWS_DOCKER_REGISTRY
                         docker push $AWS_DOCKER_REGISTRY/$APP_NAME:latest
                     '''
@@ -93,7 +91,7 @@ pipeline {
                         yum install jq -y
 
                         LATEST_TD_REVISION=$(aws ecs register-task-definition --cli-input-json file://aws/task-definition.json | jq '.taskDefinition.revision')
-                        aws ecs update-service --cluster tech2102-final-project-cluster --service my-react-service-20260330 --task-definition my-react-task-definition-json-20260330:$LATEST_TD_REVISION
+                        aws ecs update-service --cluster tech2102-final-project-cluster --service tech2102-final-project-service --task-definition Final-Project-TaskDefinition-Prod:$LATEST_TD_REVISION
                     '''
                 }
             }
