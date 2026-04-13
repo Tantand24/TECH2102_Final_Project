@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-    enviroment{
+    environment{
         AWS_DOCKER_REGISTRY = '110661053267.dkr.ecr.ca-west-1.amazonaws.com/tech2102_final_project'
         APP_NAME = 'tech2102_final_project'
         AWS_DEFAULT_REGION= 'ca-west-1'
@@ -52,7 +52,7 @@ pipeline {
             
             agent{
                 docker{
-                    'amazon/aws-cli'
+                    image 'amazon/aws-cli'
                     reuseNode true
                     args '-u root -v /var/run/docker.sock:/var/run/docker.sock --entrypoint=""'
                 }
@@ -78,7 +78,7 @@ pipeline {
 
             agent{
                 docker{
-                    'amazon/aws-cli'
+                    image 'amazon/aws-cli'
                     reuseNode true
                     args '-u root --entrypoint=""'
                 }
